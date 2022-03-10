@@ -1,4 +1,12 @@
-from django.db import models
+Создаем суперпользователя:
+
+python manage.py createsuperuser
+
+Регистрируем приложение:
+
+admin.site.register(News)
+
+В models.py:
 
 class News(models.Model):
     title = models.CharField(max_length=150, verbose_name='Наименование')
@@ -15,3 +23,28 @@ class News(models.Model):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
         ordering = ['-created_at']
+
+
+В admin.py:
+
+from django.contrib import admin
+
+from .models import News
+
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'created_at', 'updated_at', 'is_published')
+    list_display_links = ('id', 'title')
+    search_fields = ('title', 'content')
+
+admin.site.register(News, NewsAdmin)
+
+
+В apps.py:
+
+from django.apps import AppConfig
+
+
+class NewsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'news'
+    verbose_name = 'Новости'
