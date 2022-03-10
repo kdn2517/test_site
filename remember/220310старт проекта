@@ -1,0 +1,35 @@
+Все команды
+
+django-admin
+
+Стартуем проект:
+
+django-admin startproject my_site
+
+Запустить сервер:
+
+python3 manage.py runserver
+
+Новое приложение:
+
+python3 manage.py startapp news
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

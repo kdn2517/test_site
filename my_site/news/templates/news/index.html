@@ -1,0 +1,10 @@
+<head><title> {{ title }} </title></head>
+<body>
+    {% for item in news %}
+    <div>
+        <p> {{ item.title }} </p>
+        <p> {{ item.content }} </p>
+        <p> {{ item.created_at|date:"Y:m:d H:i:s" }} </p>
+    </div>
+    {% endfor %}
+</body>

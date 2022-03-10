@@ -1,0 +1,29 @@
+В models.py:
+
+class News(models.Model):
+    title = models.CharField(max_length=150)
+    content = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    photo = models.ImageField(upload_to='photo/%Y/%m/%d/')
+    is_published = models.BooleanField(default=True)
+
+Создаем миграцию:
+
+python3 manage.py makemigrations
+
+Применяем миграцию:
+
+python manage.py migrate
+
+Создаем константы для медиа:
+В my_site.settings.py:
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+В my_site.urls.py:
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_uRL, document_root=settings.MEDIA_ROOT)
+

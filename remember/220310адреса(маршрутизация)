@@ -1,0 +1,25 @@
+Регистрируем приложение:
+
+В my_site.settings.py в INSTALLED_APPS = [] добавляем 
+'news.apps.NewsConfig',
+
+
+Контроллер:
+
+В view.py:
+
+def index():
+	return HttpResponse('Hello, World!!!')
+
+Маршрутизатор:
+
+В my_site.urls.py в urlpatterns [] добавляем:
+
+path('', include('news.urls')),
+
+В news.urls.py:
+
+urlpatterns = [
+    path('', index)
+    path('test/' test),
+]

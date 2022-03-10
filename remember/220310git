@@ -1,0 +1,41 @@
+Установка git:
+
+sudo apt install git
+
+Проверка правильности установки:
+
+git --version
+
+Вводим имя и емайл:
+
+git config --global user.name "kdn2517"
+git config --global user.email "rab7777777rab@gmail.com"
+
+Проверяем:
+
+git config --list
+
+Генерируем SSH ключ:
+
+Ищем уже сгенерированные ключи:
+
+cd ~/.ssh
+ls
+
+Генерируем ключ:
+
+ssh-keygen -t rsa -b 4096 -C "rab7777777rab@gmail.com"
+
+Проверяем доступность ключа:
+
+eval "$(ssh-agent -s)"
+
+Добавляем:
+
+ssh-add ~/.ssh/your_key_name
+
+Копируем ключ и вставляем на гитхаб: https://github.com/settings/keys
+
+Проверяем:
+
+git clone ...
