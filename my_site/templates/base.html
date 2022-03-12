@@ -17,8 +17,12 @@
 
 <div class="container">
     <div class="row">
-        {% block sidebar %}default{% endblock %}
-        {% block content %}default{% endblock %}
+        <div class="col-2">
+            {% block sidebar %}default{% endblock %}
+        </div>
+        <div class="col-10">
+            {% block content %}default{% endblock %}
+        </div>
     </div>
 </div>
 
