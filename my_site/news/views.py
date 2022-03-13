@@ -6,21 +6,17 @@ from .models import News, Category
 
 def index(request):
 	news = News.objects.all()
-	categories = Category.objects.all()
 	content = {'news': news,
 			   'title': 'Список новостей',
-			   "categories": categories,
 			   }
 
 	return render(request, 'news/index.html', content)
 
 def get_category(request, category_id):
 	news = News.objects.filter(category_id=category_id)
-	categories = Category.objects.all()
 	category = Category.objects.get(pk=category_id)
 	content = {'news': news,
 			   'title': 'Список новостей',
-			   "categories": categories,
 			   'category': category,
 			   }
 
