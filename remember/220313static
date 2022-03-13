@@ -1,0 +1,7 @@
+Собрать всю статику (только для реального сервера):
+
+python manage.py collectstatic
+
+В base.html:
+
+{% load static %}
