@@ -22,7 +22,7 @@
                 <img src="{{ item.photo.url }}" width="230"></div>
             <div class="media-body col-8">
                 <h5 class="card-title"> {{ item.title }}</h5>
-                <p class="card-text"> {{ item.content|truncatechars:280 }}</p>
+                <p class="card-text"> {{ item.content|truncatechars:280|safe }}</p>
                 <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
             </div>
         </div>
