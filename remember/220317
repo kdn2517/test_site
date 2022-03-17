@@ -11,3 +11,39 @@
 • Создать новое приложение с именем posts
 • Обновить settings.py
 В новой консоли командной строки введите следующие команды.
+$ cd ~/Desktop
+$ mkdir mb && cd mb
+$ pipenv install django==3.0.1
+$ pipenv shell
+(mb) $ django-admin startproject mb_project .
+(mb) $ python manage.py startapp posts
+Далее мы должны предупредить Django о новом приложении, posts, добавив его в нижнюю часть секции INSTALLED_APPS нашего файла settings.py.
+# mb_project/settings.py
+INSTALLED_APPS = [
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+'posts.apps.PostsConfig', # new
+]
+Затем выполните команду migrate для создания начальной базы данных на основе настроек Django по умолчанию.
+(mb) $ python manage.py migrate
+Если вы посмотрите внутрь нашего каталога с помощью команды ls, вы увидите, что там теперь есть файл db.sqlite3, представляющий нашу базу данных SQLite.
+(mb) $ ls
+Pipfile db.sqlite3 mb_project
+Pipfile.lock manage.py posts
+Технически файл db.sqlite3 создается при первом запуске migrate или runserver, однако migrate синхронизирует базу данных с текущим состоянием всех моделей баз данных, содержащихся в проекте и перечисленных в INSTALLED_APPS. Другими словами, чтобы у
+бедиться, что база данных отражает текущее состояние вашего проекта, вам нужно будет запускать migrate (а также makemigrations) каждый раз, когда вы обновляете модель. Подробнее об этом в ближайшее время.
+Чтобы убедиться, что все работает правильно, запустите наш локальный сервер.
+(mb) $ python manage.py runserver
+И перейдите по адресу http://127.0.0.1:8000/, чтобы увидеть знакомую страницу.
+
+Создание модели базы данных
+Наша первая задача - создать модель базы данных, в которой мы сможем хранить и отображать сообщения наших пользователей. ORM Django автоматически превратит эту модель в таблицу базы данных. В реальном Django-проекте часто существует множество сложных, взаимосвязанных моделей баз данных, но в нашем простом приложении доски объявлений нам нужна только одна.
+Откройте файл posts/models.py и посмотрите на код по умолчанию, который предоставляет Django:
+# posts/models.py
+from django.db import models
+# Create your models here
+
