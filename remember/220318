@@ -468,7 +468,11 @@ Bootstrap по умолчанию определяет четыре размер
 Средние устройства шириной более 992px, например, небольшие настольные мониторы
 Большие устройства шириной более 1200px, например, большие настольные мониторы.
 Существует ряд параметров сетки по умолчанию, которые Bootstrap изменяет в зависимости от устройства, просматривающего сетку. Таблица 5.1 объясняет эти параметры.
-
+Как создавать сетки в Bootstrap
+Сетки создаются в Bootstrap с помощью классов CSS на элементах содержимого HTML. Вы просто пишете HTML и добавляете соответствующие классы, чтобы поместить содержимое в сетку.
+Создание базовой сетки
+The first thing you need is a container that will hold the grid elements. You have two options for containers: fixed width and fluid width. Both are responsive.
+To create a responsive fixed-width layout, use the class .container. Listing 5.1 shows a <div> as a container.
 
 
 
